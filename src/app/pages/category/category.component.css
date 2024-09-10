@@ -1,0 +1,120 @@
+
+.maindiv {
+    position: relative;
+    width: 100%;
+    height: 300px; 
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.play-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.maindiv:hover .img {
+    opacity: 1; 
+}
+
+.maindiv:hover .play-button {
+    opacity: 1; /* Show the play button */
+}
+
+h1 {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 5px;
+}
+
+
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #FFF;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: rgb(14, 129, 129);
+  }
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .go-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white ;
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .go-to-top img {
+    width: 50px;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 767px) {
+       .go-to-top {
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+  

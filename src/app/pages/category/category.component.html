@@ -1,0 +1,39 @@
+<app-searchbar 
+  (search)="onSearchTermChange($event)" 
+  [category]="category" 
+  [searchTerm]="searchTerm">
+</app-searchbar>
+
+<section class="bg-white select-none">
+  <div class="container px-6 py-10 mx-auto">
+    <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div *ngFor="let movie of movies" class="w-full cursor-pointer brighten" (click)="navigateToMovie(movie.title)">
+        <div class="w-full h-80 bg-gray-300 rounded-lg dark:bg-gray-600 maindiv relative overflow-hidden flex flex-col items-center justify-end p-4">
+          <img [src]="movie.imgurl" alt="Image" class="absolute inset-0 w-full h-full object-cover rounded-lg transition-transform duration-300">
+          <div class="play-button">
+            <img src="play.png" alt="Play" class="play-icon">
+          </div>
+          <h1 class="w-full bg-transparent rounded-lg p-2 text-center text-sm font-bold mt-2">
+            {{ movie.moviename }}
+          </h1>
+        </div>
+      </div>
+    </div>
+    <button id="goToTopButton" class="go-to-top" [style.opacity]="showGoToTopButton ? '1' : '0'" (click)="scrollToTop()">
+      <img src="up.png" alt="Go to Top">
+    </button>
+    
+    <!-- Loader -->
+    <div *ngIf="isLoading" class="flex justify-center py-4">
+      <span class="loader"></span>
+    </div>
+    <!-- No more movies message -->
+    <div *ngIf="allMoviesLoaded && movies.length > 0" class="text-center py-4 text-gray-600">
+      No more movies to load.
+    </div>
+    <!-- No movies found message -->
+    <div *ngIf="!isLoading && movies.length === 0" class="text-center py-4 text-gray-600">
+      No movies found.
+    </div>
+  </div>
+</section>

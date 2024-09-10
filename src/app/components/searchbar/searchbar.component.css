@@ -1,0 +1,82 @@
+
+.icon-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.icon-container svg {
+    width: 50px;
+    height: auto;
+}
+
+.icon-container:active {
+    animation: press 0.2s 1 linear;
+}
+
+.icon-container:active img:last-child {
+    animation: bounce 0.2s 1 linear;
+}
+@media (max-width:767px) {
+    .icon-container{
+        display: none;
+    }
+    .btn{
+        width: auto;
+        
+    }
+}
+.text {
+    color: #666;
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.high{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+}
+  
+.highlighted-text {
+    font-weight: bold;
+    color: white;
+    width:auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px 60px ;
+    border-radius: 30px;
+    font-size: 16px;
+  }
+
+@keyframes press {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.92);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    50% {
+        transform: rotate(5deg) translate(20px, -50px);
+    }
+    to {
+        transform: scale(0.9) rotate(10deg) translate(50px, -80px);
+        opacity: 0;
+    }
+}
