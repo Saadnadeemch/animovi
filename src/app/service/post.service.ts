@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, query, where, getDocs, Query, orderBy, limit, startAfter } from '@angular/fire/firestore';
-import { Observable, from } from 'rxjs';
+import { Observable, from, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -39,6 +39,7 @@ export class PostService {
     if (lastDoc) {
       q = query(q, startAfter(lastDoc));
     }
+
 
     return from(getDocs(q)).pipe(
       map(snapshot => {
