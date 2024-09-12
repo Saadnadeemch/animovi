@@ -45,7 +45,7 @@
       <img [src]="movie.screenshot3" alt="Movie ScreenShot" class="movie-banner" (load)="onImageLoad()">
     </div>
 
-    <p class="p-3 rounded-xl text-cyan-500 mx-auto  bg-slate-200 text-center font-serif font-bold mt-5 select-none">You can watch movie on any of below servers</p>
+    <p class="py-3 px-10 rounded-xl bg-cyan-500 mx-auto text-white text-center font-serif font-bold mt-5 select-none">You can watch movie on any of below servers</p>
 
     <!-- Video Server Tabs -->
     <div class="center overflow-y-auto flex flex-col justify-center mx-auto with">
@@ -57,7 +57,7 @@
           [class.text-white]="activeTab === server.id"
           [class.bg-gray-200]="activeTab !== server.id"
           [class.text-gray-700]="activeTab !== server.id"
-          class="px-4 py-2 rounded hover:bg-gray-300"
+          class="px-10 py-3 rounded hover:bg-gray-300"
         >
           {{ server.name }}
         </button>
@@ -74,7 +74,7 @@
       </ng-container>
     </div>
 
-    <p class="highlighted-text mt-5 select-none">Wait for 10 second for  loading server , If the servers didn't load Please refresh the page!</p>
+    <p class="highlighted-text mt-5 select-none">Wait 10 second for loading server , If the servers didn't load Please refresh the page!</p>
 
     <a [href]="movie.link" target="_blank" class="Download-button">
       <svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512">
@@ -98,4 +98,8 @@
       -->
     </aside>
   </div>
-  
+  <footer routerLink="/terms" class="flex justify-end items-center">
+    <button class=" text-cyan-500  py-3 px-3 rounded">
+        Terms and services
+    </button>
+</footer>

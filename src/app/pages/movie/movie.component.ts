@@ -15,7 +15,7 @@ interface VideoServer {
 @Component({
   selector: 'app-movie',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule , RouterModule],
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css']
 })
