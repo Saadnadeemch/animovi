@@ -57,20 +57,20 @@ export class MovieComponent implements OnInit {
       {
         id: 1,
         name: 'Server 1',
-        url: this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.dood),
+        url: this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.first),
         note: ''
       },
       {
         id: 2,
         name: 'Server 2',
-        url: this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.thirdvideo),
-        note: 'NOTE: if the video doesn\'t load, please click the link in the center of the video'
+        url: this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.second),
+        note: 'NOTE: if the video doesn\'t start , please pause and resume the video'
       },
       {
         id: 3,
         name: 'Server 3',
-        url: this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.moon),
-        note: 'NOTE: Click more than 3 times to start the video and wait 10 seconds'
+        url: this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.third),
+        note: 'NOTE: If the video doesn\'t load , refresh the page or wait for 10 to 20 seconds'
       }
     ];
   }
