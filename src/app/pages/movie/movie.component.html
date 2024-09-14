@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <h1 class="text-start font-bold mt-4 text-2xl">Story line</h1>
+    <h1 class="font-bold text-center  mt-4 text-2xl">Story line</h1>
     <p class="movie-description">{{movie.description}}</p>
     
     <h1 class="text-start font-bold mt-4 text-2xl">ScreenShots</h1>
@@ -49,7 +49,7 @@
 
     <!-- Video Server Tabs -->
     <div class="center overflow-y-auto flex flex-col justify-center mx-auto with">
-      <div class="flex justify-center space-x-4 mb-4">
+      <div class="flex justify-center md:space-x-4 space-x-2 mb-4">
         <button
           *ngFor="let server of videoServers"
           (click)="setActiveTab(server.id)"
@@ -57,7 +57,7 @@
           [class.text-white]="activeTab === server.id"
           [class.bg-gray-200]="activeTab !== server.id"
           [class.text-gray-700]="activeTab !== server.id"
-          class="px-10 py-3 rounded hover:bg-gray-300"
+          class="p-2 md:px-10 md:py-3 rounded hover:bg-gray-300"
         >
           {{ server.name }}
         </button>
@@ -67,7 +67,7 @@
         <div *ngIf="activeTab === server.id">
           <h1 class="text-center font-bold mt-5 text-2xl"></h1>
           <div class="mx-auto mt-3 w-full">
-            <iframe [src]="server.url" allowfullscreen="true" class="md:w-[800px] w-[400px] h-[500px] md:h-[530px]"></iframe>
+            <iframe [src]="server.url" allowfullscreen="true" class="md:w-[800px] w-auto h-[500px] md:h-[530px]"></iframe>
             <h3 *ngIf="server.note" class="text-red-700 font-serif font-bold text-center mt-1">{{ server.note }}</h3>
           </div>
         </div>

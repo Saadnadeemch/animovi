@@ -39,7 +39,6 @@ export class CategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.setupNavigationHandling();
     this.setupRouteHandling();
     this.loadInitialMovies();
   }
@@ -48,29 +47,24 @@ export class CategoryComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  private setupNavigationHandling(): void {
-    this.subscriptions.push(
-      this.router.events.pipe(
-        filter(event => event instanceof NavigationEnd)
-      ).subscribe(() => {
-        if (this.location.path().includes('/category')) {
-          this.loadMovies(true);
-        }
-      })
-    );
-  }
-
   private setupRouteHandling(): void {
     this.subscriptions.push(
       this.route.paramMap.subscribe(params => {
         const newCategory = params.get('category');
         if (this.category !== newCategory) {
           this.category = newCategory;
-          this.resetMovies();
-          this.loadMovies(true);
+          this.resetStateAndLoadMovies();
         }
       })
     );
+  }
+
+  private resetStateAndLoadMovies(): void {
+    this.movies = [];
+    this.allMoviesLoaded = false;
+    this.postService.resetLastDoc();
+    this.movieStateService.clear();
+    this.loadMovies(true);
   }
 
   private loadInitialMovies(): void {
@@ -95,13 +89,6 @@ export class CategoryComponent implements OnInit, OnDestroy {
         this.loadMovies();
       }
     }
-  }
-
-  resetMovies() {
-    this.movies = [];
-    this.allMoviesLoaded = false;
-    this.postService.resetLastDoc();
-    this.movieStateService.clear();
   }
 
   loadMovies(isInitialLoad: boolean = false): void {
@@ -144,8 +131,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
   onSearchTermChange(term: string): void {
     this.searchTerm = term.toLowerCase();
-    this.resetMovies();
-    this.loadMovies(true);
+    this.resetStateAndLoadMovies();
   }
 
   navigateToMovie(movieTitle: string): void {
