@@ -67,7 +67,7 @@
         <div *ngIf="activeTab === server.id">
           <h1 class="text-center font-bold mt-5 text-2xl"></h1>
           <div class="mx-auto mt-3 w-full">
-            <iframe [src]="server.url" allowfullscreen="true" class="md:w-[800px] w-auto h-[500px] md:h-[530px]"></iframe>
+            <iframe [src]="server.url" allowfullscreen="true" class="md:w-[800px] w-auto  h-auto md:h-[530px]"></iframe>
             <h3 *ngIf="server.note" class="text-red-700 font-serif font-bold text-center mt-1">{{ server.note }}</h3>
           </div>
         </div>
