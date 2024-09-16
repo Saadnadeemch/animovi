@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, HostListener } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PostService } from '../../service/post.service';
 import { SearchbarComponent } from '../../components/searchbar/searchbar.component';
-import { Observable, Subscription, of } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MoviestateService } from '../../service/moviestate.service';
 import { isPlatformBrowser, DOCUMENT } from '@angular/common';
-import { catchError, tap, filter, take } from 'rxjs/operators';
-import { Location } from '@angular/common';
+import { catchError, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category',
@@ -31,7 +30,6 @@ export class CategoryComponent implements OnInit, OnDestroy {
     private postService: PostService,
     private router: Router,
     private movieStateService: MoviestateService,
-    private location: Location,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -41,6 +39,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.setupRouteHandling();
     this.loadInitialMovies();
+    this.setupSearchSubscription();
   }
 
   ngOnDestroy(): void {
@@ -63,20 +62,37 @@ export class CategoryComponent implements OnInit, OnDestroy {
     this.movies = [];
     this.allMoviesLoaded = false;
     this.postService.resetLastDoc();
-    this.movieStateService.clear();
     this.loadMovies(true);
   }
 
   private loadInitialMovies(): void {
     this.movieStateService.movies$.pipe(
-      take(1)
-    ).subscribe(movies => {
-      if (movies.length > 0) {
-        this.movies = movies;
-      } else {
-        this.loadMovies(true);
+      tap(movies => {
+        if (movies.length > 0) {
+          this.movies = movies;
+        } else {
+          this.loadMovies(true);
+        }
+      })
+    ).subscribe();
+
+    this.movieStateService.searchTerm$.subscribe(term => {
+      this.searchTerm = term;
+      if (term === '') {
+        this.resetStateAndLoadMovies();
       }
     });
+  }
+
+  private setupSearchSubscription(): void {
+    this.subscriptions.push(
+      this.movieStateService.searchTerm$.subscribe(term => {
+        this.searchTerm = term;
+        if (term) {
+          this.resetStateAndLoadMovies();
+        }
+      })
+    );
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -124,13 +140,17 @@ export class CategoryComponent implements OnInit, OnDestroy {
       catchError(error => {
         console.error('Error loading movies:', error);
         this.isLoading = false;
-        return of([]);
+        return [];
       })
     ).subscribe();
   }
 
-  onSearchTermChange(term: string): void {
-    this.searchTerm = term.toLowerCase();
+  onSearch(term: string): void {
+    this.movieStateService.updateSearchTerm(term);
+  }
+
+  onClear(): void {
+    this.movieStateService.updateSearchTerm('');
     this.resetStateAndLoadMovies();
   }
 
