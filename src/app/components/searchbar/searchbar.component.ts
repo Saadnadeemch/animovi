@@ -23,12 +23,17 @@ export class SearchbarComponent {
       return 'Latest Posts From Animovie';
     }
   }
-
+  private reloadPage(): void {
+    window.location.reload();
+  }
   onSearchChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input) {
       this.searchTerm = input.value;
       this.search.emit(this.searchTerm);
+    }
+    else{
+      this.reloadPage()
     }
   }
   pasteText(): void {

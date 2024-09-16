@@ -1,7 +1,9 @@
 <div class="mx-auto">
     <nav class="border-gray-200 mt-5">
-      <div class="container mx-auto flex flex-wrap justify-between">
-        <img routerLink="/home" src="1.png" class="h-10 pl-2" alt="Logo">
+      <div class="container mx-auto flex flex-wrap justify-between pr-10">
+        <a href="/home">
+        <img  src="1.png" class="h-10 pl-2" alt="Logo">
+        </a>
   
         <button type="button"
           class="md:hidden mr-3 text-gray-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg inline-flex items-center justify-center"
@@ -54,7 +56,9 @@
     <div [ngClass]="{'translate-x-full': !sidebarOpen, 'translate-x-0': sidebarOpen}"
       class="fixed inset-0 z-40 transition-transform transform-gpu bg-white md:hidden">
       <div class="flex items-center justify-between p-4 border-b">
-        <img routerLink="/home" src="1.png" class="h-10" alt="Logo">
+        <a href="/home">
+        <img  src="1.png" class="h-10" alt="Logo">
+        </a>
         <button (click)="toggleSidebar()" class="text-gray-400 hover:text-gray-900 focus:outline-none">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
