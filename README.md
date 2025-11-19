@@ -1,27 +1,67 @@
-# Animovi
+# 🎬 Animated Streaming Website (Angular 18 + Firebase)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+A modern streaming platform UI built with Angular 18, Tailwind, SSR, and real-time Firebase integration.  
+The entire interface is fully animated, highly polished, and crafted to deliver a streaming experience that feels fast, smooth, and genuinely fun to use.
 
-## Development server
+This project pulls its data from Firebase in real time and works hand-in-hand with a custom backend CRM panel where movies, categories, and metadata are managed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🌟 Overview
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project was built as a complete front-end experience for a streaming website.  
+It includes everything you would expect from a modern streaming platform:
 
-## Build
+- A responsive, Netflix-style homepage  
+- Smooth animated transitions  
+- A detailed movie screen with full info  
+- Live search that reacts instantly  
+- Category-based browsing  
+- Server-side rendering for SEO  
+- Real-time data powered by Firebase  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Originally, the content library had 60+ movies hosted on Google Drive.  
+Many were later removed due to Drive's policy limits — the platform now uses **embed links**, making it flexible enough to stream content from **any external hosting provider**.
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## ✨ Key Features
 
-## Running end-to-end tests
+### 🔐 Authentication & Realtime Backend
+- Connected directly to Firebase  
+- Real-time data sync for all movies, categories, and metadata  
+- Secure and scalable infrastructure  
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 🎞 Streaming Experience
+- Fully animated UI  
+- Interactive movie detail pages  
+- Embed link streaming (supports any streaming host)  
+- Smooth transitions and modals  
 
-## Further help
+### 🔎 Search & Discovery
+- Real-time search  
+- Category filters  
+- Optimized list rendering  
+- Fast UI built with RxJS state management  
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 🖥 UI & UX
+- 100% responsive on all screens  
+- Tailwind CSS for a clean, modern layout  
+- SSR powered by Angular Universal  
+- Professional, polished streaming interface  
+
+### 🛠 Tech Stack
+- **Angular 18**  
+- **Angular Universal (SSR)**  
+- **Tailwind CSS**  
+- **Firebase (Database + Hosting + Auth if used)**  
+- **RxJS state management**  
+- **Custom backend CRM** connected to Firebase  
+### ScreenShots 
+[![Screenshot-2025-11-19-122826.png](https://i.postimg.cc/5NpJgbD0/Screenshot-2025-11-19-122826.png)](https://postimg.cc/pp93XbWb)
+[![Screenshot-2025-11-19-122357.png](https://i.postimg.cc/wTDFJQ4X/Screenshot-2025-11-19-122357.png)](https://postimg.cc/QHxpZ13C)
+[![Screenshot-2025-11-19-122425.png](https://i.postimg.cc/GpKvhBfh/Screenshot-2025-11-19-122425.png)](https://postimg.cc/8FF7ZCDq)
+[![Screenshot-2025-11-19-122843.png](https://i.postimg.cc/TwyJPVWS/Screenshot-2025-11-19-122843.png)](https://postimg.cc/Kk2Mqgfr)
+[![Screenshot-2025-11-19-122857.png](https://i.postimg.cc/8Pgm1rkc/Screenshot-2025-11-19-122857.png)](https://postimg.cc/8sw64c6g)
+
+
